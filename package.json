@@ -1,0 +1,22 @@
+{
+  "name": "blog-voyage",
+  "version": "1.0.0",
+  "description": "back for blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/etochy/backb_blog-voyage.git"
+  },
+  "keywords": [
+    "webservice"
+  ],
+  "author": "Esteban Launay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/etochy/backb_blog-voyage/issues"
+  },
+  "homepage": "https://github.com/etochy/backb_blog-voyage#readme"
+}
