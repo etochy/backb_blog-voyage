@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/etochy/backb_blog-voyage/issues"
   },
-  "homepage": "https://github.com/etochy/backb_blog-voyage#readme"
+  "homepage": "https://github.com/etochy/backb_blog-voyage#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
