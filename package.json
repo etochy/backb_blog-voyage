@@ -15,6 +15,9 @@
   ],
   "author": "Esteban Launay",
   "license": "ISC",
+  "engines": {
+    "node": "10.1.0"
+  },
   "bugs": {
     "url": "https://github.com/etochy/backb_blog-voyage/issues"
   },
