@@ -1,14 +1,35 @@
 const { db } = require('./../index');
+var mongoose = require('mongoose'),
+    Utilisateur = mongoose.model('Utilisateur');
 
 function all_utils(req, res) {
-    res.end('coucou');
-    console.log('all utils')
+    console.log('all utils');
+
+    Utilisateur.find({}, function (err, util) {
+        if (err)
+            res.send(err);
+        res.json(util);
+    });
+
 }
 function create_util(req, res) {
     console.log('create utils')
+    var new_util = new Utilisateur(req.body);
+    new_util.save(function (err, util) {
+        if (err)
+            res.send(err);
+        res.json(util);
+    });
 }
 function get_a_util(req, res) {
     console.log('get a utils')
+
+    Utilisateur.findById(req.params.idUtil, function(err, util) {
+        if (err)
+          res.send(err);
+        res.json(util);
+      });
+
 }
 function update_a_util(req, res) {
     console.log('up utils')

@@ -1,38 +1,34 @@
 'use strict';
 
 const PORT = process.env.PORT || 5000;
-const BDD = process.env.MONGODB_URI || "mongodb://localhost:27017/test"
+const BDD = process.env.MONGODB_URI || "mongodb://192.168.99.100:27017/"
 const express = require('express');
 const app = express();
-const mongodb = require("mongodb");
-const Article = require('./models/article')
-
-const ObjectID = mongodb.ObjectID;
+const mongoose = require("mongoose");
+const Utilisateur = require('./models/utilisateur');
+const bodyParser = require('body-parser');
 
 const UTILISATEURS_COLLECTION = "utilisateurs";
 
-let db;
-
-// mongoose instance connection url connection
-mongodb.Promise = global.Promise;
-mongodb.connect(BDD, function (err, client) {
+mongoose.Promise = global.Promise;
+mongoose.connect(BDD, function (err, res) {
     if (err) {
-        console.log(err);
-        process.exit(1);
+        console.log('ERROR connecting to: ' + BDD + '. ' + err);
+    } else {
+        console.log('Succeeded connected to: ' + BDD);
     }
-    // Save database object from the callback for reuse.
-    db = client.db();
-
-    module.exports.db = db;
-
-    console.log("Database connection ready");
-
-    const server = app.listen(PORT, function () {
-        var port = server.address().port;
-        console.log("App now running on port", port);
-    })
-
 });
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 var routes = require('./controllers/controllerUtil'); //importing route
 routes(app);
+
+app.listen(PORT, function () {
+    console.log("App now running on port");
+})
+
+app.use(function (req, res) {
+    res.status(404).send({ url: req.originalUrl + ' not found' })
+});

@@ -1,0 +1,15 @@
+version: '2.1'
+services:
+  mongodb:
+    image: bitnami/mongodb:latest
+    ports:
+     - 27017:27017
+    container_name: "mongodb"
+    volumes:
+     - mongodb_data:/bitnami
+    environment:
+     - MONGODB_USER="user"
+     - MONGODB_PASS="password"
+
+volumes:
+  mongodb_data:
