@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 const mongodb = require("mongodb");
 var Schema = mongodb.Schema;
 
@@ -15,3 +15,4 @@ var Utilisateur = new Schema({
 });
 
 module.exports = mongodb.model('Utilisateurs', Utilisateur);
+*/
