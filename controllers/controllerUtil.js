@@ -9,12 +9,20 @@ module.exports = function (app) {
   // Routes
   app.route('/utilisateurs')
     .get(function (req, res) {
-      serviceUtil.all_utils();
+      all_utils(req, res);
     })
-    .post(function (req, res) { serviceUtil.create_util() });
+    .post(function (req, res) {
+      create_util(req, res);
+    });
 
   app.route('/utilisateurs/:idUtil')
-    .get(function (req, res) { serviceUtil.get_a_util() })
-    .put(function (req, res) { serviceUtil.update_a_util() })
-    .delete(function (req, res) { serviceUtil.delete_a_util() });
+    .get(function (req, res) {
+      get_a_util(req, res);
+    })
+    .put(function (req, res) {
+      update_a_util(req, res);
+    })
+    .delete(function (req, res) {
+      delete_a_util(req, res);
+    });
 }
