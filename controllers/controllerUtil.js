@@ -1,6 +1,11 @@
-import * as serviceUtil from '../services/serviceUtil';
+const {
+  all_utils,
+  create_util,
+  get_a_util,
+  update_a_util,
+  delete_a_util } = require('../services/serviceUtil');
 
-export default function (app) {
+module.exports = function (app) {
   // Routes
   app.route('/utilisateurs')
     .get(function (req, res) {

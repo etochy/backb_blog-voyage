@@ -1,3 +1,5 @@
+'use strict';
+
 const PORT = process.env.PORT || 5000;
 const BDD = process.env.MONGODB_URI || "mongodb://localhost:27017/test"
 const express = require('express');
@@ -9,7 +11,7 @@ const ObjectID = mongodb.ObjectID;
 
 const UTILISATEURS_COLLECTION = "utilisateurs";
 
-export var db;
+let db;
 
 // mongoose instance connection url connection
 mongodb.Promise = global.Promise;
@@ -20,6 +22,9 @@ mongodb.connect(BDD, function (err, client) {
     }
     // Save database object from the callback for reuse.
     db = client.db();
+
+    module.exports.db = db;
+
     console.log("Database connection ready");
 
     const server = app.listen(PORT, function () {

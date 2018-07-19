@@ -1,17 +1,23 @@
-import db from './../index';
+const { db } = require('./../index');
 
-export function all_utils() {
+function all_utils() {
     console.log('all utils')
 }
-export function create_util() {
+function create_util() {
     console.log('create utils')
 }
-export function get_a_util() {
+function get_a_util() {
     console.log('get a utils')
 }
-export function update_a_util() {
+function update_a_util() {
     console.log('up utils')
 }
-export function delete_a_util() {
+function delete_a_util() {
     console.log('del utils')
 }
+
+module.exports.all_utils = all_utils;
+module.exports.create_util = create_util;
+module.exports.get_a_util = get_a_util;
+module.exports.update_a_util = update_a_util;
+module.exports.delete_a_util = delete_a_util;
