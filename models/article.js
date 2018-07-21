@@ -1,18 +1,14 @@
-/*'use strict';
-const mongodb = require("mongodb");
-var Schema = mongodb.Schema;
+var mongoose = require('mongoose');
 
+var Schema = mongoose.Schema;
 
-var Utilisateur = new Schema({
-  firstname: {
-    type: String,
-    required: 'Kindly enter the firstname of the user'
-  },
-  lastname: {
-    type: String,
-    required: 'Kindly enter the lastname of the user'
-  }
+var Article = new Schema({
+  utilisateur: String,
+  akArticle: { type: String, required: true, index: { unique: true } },
+  nom: String,
+  date: Date,
+  localisation: String,
+  description: String
 });
 
-module.exports = mongodb.model('Utilisateurs', Utilisateur);
-*/
+module.exports = mongoose.model('Article', Article);

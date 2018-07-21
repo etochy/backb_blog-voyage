@@ -23,8 +23,12 @@
   },
   "homepage": "https://github.com/etochy/backb_blog-voyage#readme",
   "dependencies": {
+    "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "mongoose": "^5.2.4"
+    "jwt-simple": "^0.5.1",
+    "moment": "^2.22.2",
+    "mongoose": "^5.2.4",
+    "url": "^0.11.0"
   }
 }

@@ -1,4 +1,4 @@
-const { db } = require('./../index');
+const appli = require('../index');
 var mongoose = require('mongoose'),
     Utilisateur = mongoose.model('Utilisateur');
 
@@ -24,11 +24,11 @@ function create_util(req, res) {
 function get_a_util(req, res) {
     console.log('get a utils')
 
-    Utilisateur.findById(req.params.idUtil, function(err, util) {
+    Utilisateur.findById(req.params.idUtil, function (err, util) {
         if (err)
-          res.send(err);
+            res.send(err);
         res.json(util);
-      });
+    });
 
 }
 function update_a_util(req, res) {
@@ -38,8 +38,11 @@ function delete_a_util(req, res) {
     console.log('del utils')
 }
 
+
+
 module.exports.all_utils = all_utils;
 module.exports.create_util = create_util;
 module.exports.get_a_util = get_a_util;
 module.exports.update_a_util = update_a_util;
 module.exports.delete_a_util = delete_a_util;
+
