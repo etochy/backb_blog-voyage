@@ -22,25 +22,24 @@ module.exports = function (app) {
   app.route('/login')
     .post((req, res) => serviceAuth.login(req, res));
 
-  /* IN PROGRESS
-app.route('/articles')
-  .get((req, res) => serviceArti.get_articles(req, res))
-  .post(bodyParser(), jwtauth, requireAuth, (req, res) => serviceArti.create_article(req, res));
+  app.route('/articles')
+    .get((req, res) => serviceArti.get_articles(req, res))
+    .post(jwtauth, requireAuth, (req, res) => serviceArti.create_article(req, res));
 
-app.route('/articles/:idArticle')
-  .get((req, res) => serviceArti.get_a_article(req, res))
-*/
+  app.route('/articles/:idArticle')
+    .get((req, res) => serviceArti.get_a_article(req, res))
+
 
   // zone protegée
   app.route('/utilisateurs')
-    .get(bodyParser(), jwtauth, requireAuth, (req, res) => serviceUtil.all_utils(req, res))
-    .post(bodyParser(), jwtauth, requireAuth, (req, res) => serviceUtil.create_util(req, res));
+    .get(jwtauth, requireAuth, (req, res) => serviceUtil.all_utils(req, res))
+    .post(jwtauth, requireAuth, (req, res) => serviceUtil.create_util(req, res));
   //.post( bodyParser(), jwtauth, requireAuth,  (req, res) => service.create_util(req, res));
 
   app.route('/utilisateurs/:idUtil')
-    .get(bodyParser(), jwtauth, requireAuth, (req, res) => serviceUtil.get_a_util(req, res))
-    .put(bodyParser(), jwtauth, requireAuth, (req, res) => serviceUtil.update_a_util(req, res))
-    .delete(bodyParser(), jwtauth, requireAuth, (req, res) => serviceUtil.delete_a_util(req, res));
+    .get(jwtauth, requireAuth, (req, res) => serviceUtil.get_a_util(req, res))
+    .put(jwtauth, requireAuth, (req, res) => serviceUtil.update_a_util(req, res))
+    .delete(jwtauth, requireAuth, (req, res) => serviceUtil.delete_a_util(req, res));
 
 
 }

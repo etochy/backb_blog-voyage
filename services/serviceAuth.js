@@ -39,16 +39,12 @@ function login(req, res) {
                         appli.app.get('jwtTokenSecret')
                     );
 
-                    const userResp = new Utilisateur();
-                    userResp.nom = user.nom;
-                    userResp.prenom = user.prenom;
-                    userResp.email = user.email;
-                    userResp.username = user.username;
+                    user.password = '';
 
                     res.json({
                         token: token,
                         expires: expires,
-                        user: userResp.toJSON()
+                        user: user.toJSON()
                     });
                 } else {
                     // The password is wrong...

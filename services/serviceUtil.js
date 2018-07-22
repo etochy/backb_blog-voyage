@@ -1,4 +1,3 @@
-const appli = require('../index');
 var mongoose = require('mongoose'),
     Utilisateur = mongoose.model('Utilisateur');
 

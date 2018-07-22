@@ -6,12 +6,14 @@ const express = require('express');
 const app = express();
 const mongoose = require("mongoose");
 const Utilisateur = require('./models/utilisateur');
+const Article = require('./models/article');
 const bodyParser = require('body-parser');
 
 var url = require('url')
 var jwt = require('jwt-simple');
 
 const UTILISATEURS_COLLECTION = "utilisateurs";
+const ARTICLES_COLLECTION = "articles";
 
 mongoose.Promise = global.Promise;
 mongoose.connect(BDD, function (err, res) {
