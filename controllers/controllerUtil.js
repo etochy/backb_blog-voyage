@@ -33,7 +33,7 @@ module.exports = function (app) {
   // zone protegée
   app.route('/utilisateurs')
     .get(jwtauth, requireAuth, (req, res) => serviceUtil.all_utils(req, res))
-    .post(jwtauth, requireAuth, (req, res) => serviceUtil.create_util(req, res));
+    .post((req, res) => serviceUtil.create_util(req, res));
   //.post( bodyParser(), jwtauth, requireAuth,  (req, res) => service.create_util(req, res));
 
   app.route('/utilisateurs/:idUtil')
