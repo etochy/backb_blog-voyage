@@ -8,7 +8,8 @@ var Article = new Schema({
   nom: String,
   date: Date,
   localisation: String,
-  description: String
+  description: String,
+  image: String
 });
 
 module.exports = mongoose.model('Article', Article);
