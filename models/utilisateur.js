@@ -22,22 +22,22 @@ var Utilisateur = new Schema({
     prenom: String,
     email: { type: String, required: true },
     username: { type: String, required: true, index: { unique: true } },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    position: String, 
+    pays: String,
+    ville: String,
+    bio: String
 });
 
 Utilisateur.pre('save', function (next) {
     var user = this;
-    console.log('presave');
 
     // only hash the password if it has been modified (or is new)
     if (!user.isModified('password')) return next();
 
-    console.log('presalt');
-
     // generate a salt
     bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt) {
         if (err) return next(err);
-        console.log('prehash');
         // hash the password along with our new salt
         bcrypt.hash(user.password, salt, function (err, hash) {
             if (err) return next(err);
@@ -50,15 +50,10 @@ Utilisateur.pre('save', function (next) {
 });
 
 Utilisateur.methods.comparePassword = function (candidatePassword, cb) {
-    console.log('compare');
     bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
         if (err) return cb(err);
         cb(null, isMatch);
     });
 };
-
-Utilisateur.statics.findByUsername = function (username, cb) {
-    this.findOne({ username: username }, cb);
-}
 
 module.exports = mongoose.model('Utilisateur', Utilisateur);

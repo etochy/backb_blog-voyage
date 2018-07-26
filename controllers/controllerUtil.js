@@ -12,7 +12,7 @@ module.exports = function (app) {
  */
   var requireAuth = function (req, res, next) {
     if (!req.user) {
-      console.log('auth');
+      //console.log(req);
       res.status(401).end('Non autorise');
     } else {
       next()
@@ -37,7 +37,7 @@ module.exports = function (app) {
   //.post( bodyParser(), jwtauth, requireAuth,  (req, res) => service.create_util(req, res));
 
   app.route('/utilisateurs/:idUtil')
-    .get(jwtauth, requireAuth, (req, res) => serviceUtil.get_a_util(req, res))
+    .get((req, res) => serviceUtil.get_a_util(req, res))
     .put(jwtauth, requireAuth, (req, res) => serviceUtil.update_a_util(req, res))
     .delete(jwtauth, requireAuth, (req, res) => serviceUtil.delete_a_util(req, res));
 

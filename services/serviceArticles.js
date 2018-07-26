@@ -34,7 +34,8 @@ function create_article(req, res) {
     new_article.save(function (err, article) {
         if (err)
             res.send(err);
-        res.json(article);
+        else
+            res.json(article);
     });
 }
 function get_a_article(req, res) {
@@ -43,7 +44,8 @@ function get_a_article(req, res) {
     Article.findOne({ x }, function (err, article) {
         if (err)
             res.send(err);
-        res.json(article);
+        else
+            res.json(article);
     });
 
 }

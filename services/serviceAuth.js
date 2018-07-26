@@ -11,46 +11,50 @@ function login(req, res) {
 
     if (username && password) {
 
-        console.log('dedans : ' + username + password);
-
         // Fetch the appropriate user, if they exist
         Utilisateur.findOne({ username }, function (err, user) {
 
-            if (err) {
+            if (err || user === null) {
                 // user cannot be found; may wish to log that fact here. For simplicity, just return a 401
-                res.send('Authentication error', 401)
+                console.log('error');
+                res.status(401).send('Authentication error');
             }
 
-            user.comparePassword(password, function (err, isMatch) {
-                if (err) {
-                    // an error has occured checking the password. For simplicity, just return a 401
-                    res.send('Authentication error', 401)
-                }
-                if (isMatch) {
+            else {
+                user.comparePassword(password, function (err, isMatch) {
+                    if (err) {
+                        // an error has occured checking the password. For simplicity, just return a 401
 
-                    // Great, user has successfully authenticated, so we can generate and send them a token.	
-                    var expires = moment().add(7, 'days').valueOf()
-                    
-                    var token = jwt.encode(
-                        {
-                            iss: user.id,
-                            exp: expires
-                        },
-                        appli.app.get('jwtTokenSecret')
-                    );
+                        res.status(401).send('Authentication error');
+                    }
+                    if (isMatch) {
 
-                    user.password = '';
+                        // Great, user has successfully authenticated, so we can generate and send them a token.	
+                        var expires = moment().add(1,'days');
 
-                    res.json({
-                        token: token,
-                        expires: expires,
-                        user: user.toJSON()
-                    });
-                } else {
-                    // The password is wrong...
-                    res.send('Authentication error', 401)
-                }
-            });
+                        var token = jwt.encode(
+                            {
+                                iss: user.id,
+                                exp: expires
+                            },
+                            appli.app.get('jwtTokenSecret')
+                        );
+
+                        user.password = '';
+
+                        res.json({
+                            token: token,
+                            expires: expires,
+                            user: user.toJSON()
+                        });
+                    } else {
+                        // The password is wrong...
+                        res.status(401).send('Authentication error');
+                    }
+                });
+            }
+
+
 
         });
     } else {
