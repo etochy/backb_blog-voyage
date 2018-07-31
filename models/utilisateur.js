@@ -26,7 +26,8 @@ var Utilisateur = new Schema({
     position: String, 
     pays: String,
     ville: String,
-    bio: String
+    bio: String,
+    image: String
 });
 
 Utilisateur.pre('save', function (next) {

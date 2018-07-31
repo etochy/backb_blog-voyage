@@ -41,6 +41,9 @@ module.exports = function (app) {
     .put(jwtauth, requireAuth, (req, res) => serviceUtil.update_a_util(req, res))
     .delete(jwtauth, requireAuth, (req, res) => serviceUtil.delete_a_util(req, res));
 
+  app.route('/utilisateurs/update-position/:idUtil')
+    .put(jwtauth, requireAuth, (req, res) => serviceUtil.update_a_util_pos(req, res));
+
 
 }
 

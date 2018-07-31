@@ -28,9 +28,7 @@ function get_a_util(req, res) {
             util.password = '';
             res.json(util);
         }
-
     });
-
 }
 
 function update_a_util(req, res) {
@@ -46,8 +44,29 @@ function update_a_util(req, res) {
             util.position = _util.position;
             util.pays = _util.pays;
             util.ville = _util.ville;
-            util.bio = _util.bio
+            util.bio = _util.bio;
+            util.image = _util.image;
 
+            util.save(function (err, util) {
+                if (err)
+                    res.send(err);
+                res.json(util);
+            });
+        }
+
+    });
+}
+
+function update_a_util_pos(req, res) {
+    var _util = new Utilisateur(req.body);
+
+    Utilisateur.findOne({ username: req.params.idUtil }, function (err, util) {
+        if (err)
+            res.send(err);
+        else {
+            util.position = _util.position;
+            util.pays = _util.pays;
+            util.ville = _util.ville;
             util.save(function (err, util) {
                 if (err)
                     res.send(err);
@@ -70,4 +89,5 @@ module.exports.create_util = create_util;
 module.exports.get_a_util = get_a_util;
 module.exports.update_a_util = update_a_util;
 module.exports.delete_a_util = delete_a_util;
+module.exports.update_a_util_pos = update_a_util_pos;
 
