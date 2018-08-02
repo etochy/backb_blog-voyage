@@ -2,12 +2,16 @@ const PORT = process.env.PORT || 5000;
 const BDD = process.env.MONGODB_URI || "mongodb://192.168.99.100:27017/";
 const SECRET = process.env.SECRET_JWT || "secret";
 
+/*
+const PASSWORD = process.env.MDP_EMAIL || "";
+const EMAIL = process.env.EMAIL || "contact.esteban.launay.pro@gmail.com"; */
+
 const express = require('express');
 var cors = require('cors');
 const app = express();
 app.use(cors());
 const mongoose = require("mongoose");
-const nodemailer = require('nodemailer');
+// const nodemailer = require('nodemailer');
 const Utilisateur = require('./models/utilisateur');
 const Article = require('./models/article');
 const bodyParser = require('body-parser');
@@ -38,3 +42,5 @@ app.use(function (req, res) {
 });
 
 module.exports.app = app;
+/* module.exports.PASSWORD = PASSWORD;
+module.exports.EMAIL = EMAIL; */

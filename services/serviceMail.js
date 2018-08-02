@@ -1,13 +1,11 @@
-const PASSWORD = process.env.MDP_EMAIL || "";
-const EMAIL = process.env.EMAIL || "contact.esteban.launay.pro@gmail.com";
-
-const nodemailer = require('nodemailer');
+// var nodemailer = require('nodemailer');
+// const appli = require('../index');
 
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: EMAIL,
-        pass: PASSWORD
+        user: appli.EMAIL,
+        pass: appli.PASSWORD
     }
 });
 
@@ -15,7 +13,7 @@ function envoi_mail(req, res) {
     var contenu = req.body;
 
     var mailOptions = {
-        from: EMAIL,
+        from: appli.EMAIL,
         to: 'esteban.launay.pro@gmail.com',
         subject: contenu.sujet,
         text: contenu.mail + ' : \n' + contenu.message
