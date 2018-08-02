@@ -27,7 +27,7 @@ module.exports = function (app) {
     .post(jwtauth, requireAuth, (req, res) => serviceArti.create_article(req, res));
 
   app.route('/articles/:idArticle')
-    .get((req, res) => serviceArti.get_a_article(req, res))
+    .get((req, res) => serviceArti.get_a_article(req, res));
 
   app.route('/contacter')
     .post((req, res) => serviceMail.envoi_mail(req, res));
