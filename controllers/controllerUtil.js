@@ -3,7 +3,6 @@ const serviceAuth = require('../services/serviceAuth');
 const serviceArti = require('../services/serviceArticles');
 const serviceMail = require('../services/serviceMail');
 
-const bodyParser = require('body-parser');
 var jwtauth = require('../lib/jwtauth')
 
 module.exports = function (app) {

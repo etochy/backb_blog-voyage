@@ -1,9 +1,7 @@
-const PASSWORD = process.env.MDP_EMAIL || "xxx";
+const PASSWORD = process.env.MDP_EMAIL || "";
 const EMAIL = process.env.EMAIL || "contact.esteban.launay.pro@gmail.com";
 
 const nodemailer = require('nodemailer');
-
-
 
 var transporter = nodemailer.createTransport({
     service: 'gmail',
