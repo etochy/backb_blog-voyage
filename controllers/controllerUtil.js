@@ -1,6 +1,7 @@
 const serviceUtil = require('../services/serviceUtil');
 const serviceAuth = require('../services/serviceAuth');
 const serviceArti = require('../services/serviceArticles');
+const serviceMail = require('../services/serviceMail');
 
 const bodyParser = require('body-parser');
 var jwtauth = require('../lib/jwtauth')
@@ -28,6 +29,9 @@ module.exports = function (app) {
 
   app.route('/articles/:idArticle')
     .get((req, res) => serviceArti.get_a_article(req, res))
+
+  app.route('/contacter')
+    .post((req, res) => serviceMail.envoi_mail(req, res));
 
 
   // zone protegée
