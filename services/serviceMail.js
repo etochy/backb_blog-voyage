@@ -1,4 +1,4 @@
-var nodemailer = require('nodemailer');
+// var nodemailer = require('nodemailer');
 
 const PASSWORD = process.env.MDP_EMAIL || "";
 const EMAIL = process.env.EMAIL || "";
