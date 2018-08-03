@@ -1,4 +1,4 @@
-var nodemailer = require('nodemailer');
+// var nodemailer = require('nodemailer');
 
 const PASSWORD = process.env.MDP_EMAIL || "";
 const EMAIL = process.env.EMAIL || "contact.esteban.launay.pro@gmail.com";
@@ -9,7 +9,7 @@ function envoi_mail(req, res) {
     var contenu = req.body;
 
     console.log(EMAIL);
-
+/*
     transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -45,7 +45,7 @@ function envoi_mail(req, res) {
                 }
             });
         }
-    });
+    });*/
 }
 
 module.exports.envoi_mail = envoi_mail;
