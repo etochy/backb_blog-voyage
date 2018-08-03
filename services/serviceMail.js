@@ -9,6 +9,8 @@ function envoi_mail(req, res) {
     var contenu = req.body;
 
     console.log(EMAIL);
+
+    res.status(204).send(EMAIL);
 /*
     transporter = nodemailer.createTransport({
         service: 'gmail',
