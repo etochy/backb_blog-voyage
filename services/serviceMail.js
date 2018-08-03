@@ -4,21 +4,18 @@ const PASSWORD = process.env.MDP_EMAIL || "";
 const EMAIL = process.env.EMAIL || "";
 
 var transporter = null;
+transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: EMAIL,
+        pass: PASSWORD
+    }
+});
 
 function envoi_mail(req, res) {
     var contenu = req.body;
 
     console.log(EMAIL);
-
-    res.status(204).send(EMAIL);
-/*
-    transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: EMAIL,
-            pass: PASSWORD
-        }
-    });
 
     var mailOptions = {
         from: EMAIL,
@@ -47,7 +44,7 @@ function envoi_mail(req, res) {
                 }
             });
         }
-    });*/
+    });
 }
 
 module.exports.envoi_mail = envoi_mail;
