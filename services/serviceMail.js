@@ -1,7 +1,7 @@
 // var nodemailer = require('nodemailer');
 
 const PASSWORD = process.env.MDP_EMAIL || "";
-const EMAIL = process.env.EMAIL || "contact.esteban.launay.pro@gmail.com";
+const EMAIL = process.env.EMAIL || "";
 
 var transporter = null;
 
