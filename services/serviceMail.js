@@ -14,9 +14,7 @@ transporter = nodemailer.createTransport({
 
 function envoi_mail(req, res) {
     var contenu = req.body;
-
-    console.log(EMAIL);
-
+    
     var mailOptions = {
         from: EMAIL,
         to: 'esteban.launay.pro@gmail.com',
