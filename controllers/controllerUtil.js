@@ -3,6 +3,7 @@ const serviceAuth = require('../services/serviceAuth');
 const serviceArti = require('../services/serviceArticles');
 const serviceMail = require('../services/serviceMail');
 const serviceRessources = require('../services/serviceRessources');
+const serviceBlog = require('../services/serviceBlog');
 
 var jwtauth = require('../lib/jwtauth')
 
@@ -62,6 +63,7 @@ module.exports = function (app) {
   app.route('/utilisateurs')
     .get(jwtauth, requireAuth, (req, res) => serviceUtil.all_utils(req, res))
     .post(jwtauth, requireAuth, (req, res) => serviceUtil.create_util(req, res));
+    // .post((req, res) => serviceUtil.create_util(req, res));
   //.post( bodyParser(), jwtauth, requireAuth,  (req, res) => service.create_util(req, res));
 
   app.route('/utilisateurs/:idUtil')
@@ -72,15 +74,4 @@ module.exports = function (app) {
   app.route('/utilisateurs/update-position/:idUtil')
     .put(jwtauth, requireAuth, (req, res) => serviceUtil.update_a_util_pos(req, res));
 
-
 }
-
-
-/*
-
-app.get('/secret', express.bodyParser(), jwtauth, requireAuth, function(req, res){	
-	res.send('Hello ' + req.user.username)
-})
-
-
-*/

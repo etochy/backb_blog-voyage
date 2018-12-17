@@ -32,7 +32,7 @@ var Utilisateur = new Schema({
 
 Utilisateur.pre('save', function (next) {
     var user = this;
-
+    console.log('Creation user');
     // only hash the password if it has been modified (or is new)
     if (!user.isModified('password')) return next();
 
