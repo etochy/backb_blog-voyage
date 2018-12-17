@@ -9,6 +9,9 @@ app.use(cors());
 const mongoose = require("mongoose");
 const Utilisateur = require('./models/utilisateur');
 const Article = require('./models/article');
+const Message = require('./models/message');
+const Blog = require('./models/blog');
+const Ressource = require('./models/ressource');
 const bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
