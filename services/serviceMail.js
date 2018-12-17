@@ -1,4 +1,41 @@
 var nodemailer = require('nodemailer');
+var mongoose = require('mongoose'),
+    Message = mongoose.model('Message');
+
+
+function creer_message(req, res) {
+    var new_message = new Message(req.body);
+    new_message.save(function (err, message) {
+        if (err)
+            res.send(err);
+        else
+            res.json(message);
+    });
+}
+
+function get_all_messages(req, res) {
+    Message.find({}).sort({ date: 'desc' }).exec(function (err, message) {
+        if (err)
+            res.send(err);
+        res.json(message);
+    });
+}
+
+function update_a_message(req, res){
+    var _mes = new Ressource(req.body);
+    Message.findOne({ akRessource: req.params.idMessage }, function (err, mes) {
+        if (err)
+            res.send(err);
+        else {
+            mes.vu = _mes.vu;
+            mes.save(function (err, mes) {
+                if (err)
+                    res.send(err);
+                res.json(mes);
+            });
+        }
+    });
+}
 
 const PASSWORD = process.env.MDP_EMAIL || "";
 const EMAIL = process.env.EMAIL || "";
@@ -46,3 +83,7 @@ function envoi_mail(req, res) {
 }
 
 module.exports.envoi_mail = envoi_mail;
+
+module.exports.creer_message = creer_message;
+module.exports.get_all_messages = get_all_messages;
+module.exports.update_a_message = update_a_message;

@@ -47,7 +47,6 @@ function get_a_article(req, res) {
         else
             res.json(article);
     });
-
 }
 function update_a_article(req, res) {
     console.log('up utils')
