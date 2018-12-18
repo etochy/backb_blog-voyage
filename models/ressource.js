@@ -4,7 +4,8 @@ var Schema = mongoose.Schema;
 
 var Ressource = new Schema({
   akRessource: { type: String, required: true, index: { unique: true } },
-  ressource: String
+  ressource: String,
+  ressource_eng: String,
 });
 
 module.exports = mongoose.model('Ressource', Ressource);
