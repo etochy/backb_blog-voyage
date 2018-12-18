@@ -29,7 +29,6 @@ function get_articles(req, res) {
     }
 }
 function create_article(req, res) {
-    console.log('create utils')
     var new_article = new Article(req.body);
     new_article.save(function (err, article) {
         if (err)
