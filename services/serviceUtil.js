@@ -70,7 +70,7 @@ function update_a_util_pos(req, res) {
             util.save(function (err, util) {
                 if (err)
                     res.send(err);
-                res.json(util);
+                res.json(util.position);
             });
         }
 
