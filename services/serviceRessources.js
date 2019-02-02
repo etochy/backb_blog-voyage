@@ -33,6 +33,7 @@ function update_a_ressource(req, res) {
         else {
             ress.ressource = _res.ressource;
             ress.ressource_eng = _res.ressource_eng;
+            ress.image64 = _res.image64;
             ress.save(function (err, ress) {
                 if (err)
                     res.send(err);

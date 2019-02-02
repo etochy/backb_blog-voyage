@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 var Message = new Schema({
   akMessage: { type: String, required: true, index: { unique: true } },
   message: String,
+  sujet: String,
   date: Date,
   email: String,
   telephone: String,

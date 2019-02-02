@@ -33,6 +33,10 @@ module.exports = function (app) {
   app.route('/articles/:idArticle')
     .get((req, res) => serviceArti.get_a_article(req, res));
 
+  app.route('/commentaires')
+    .get((req, res) => serviceArti.get_comments(req, res))
+    .post((req, res) => serviceArti.create_comment(req, res));
+
   // ARTICLES BLOG
   app.route('/blog')
     .get((req, res) => serviceBlog.get_all_blogs(req, res))
@@ -49,6 +53,9 @@ module.exports = function (app) {
 
   app.route('/contacter/:idMessage')
     .put(jwtauth, requireAuth, (req, res) => serviceMail.update_a_message(req, res));
+
+  app.route('/messages')
+    .get(jwtauth, requireAuth, (req, res) => serviceMail.get_all_messages(req, res));
 
   // RESSOURCES
   app.route('/ressources')

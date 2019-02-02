@@ -5,9 +5,12 @@ var mongoose = require('mongoose'),
 
 function creer_message(req, res) {
     var new_message = new Message(req.body);
+    new_message.date = new Date();
+    var ak = (new_message.sujet + new_message.email + new_message.date);
+    new_message.akMessage = ak;    
     new_message.save(function (err, message) {
         if (err)
-            res.send(err);
+            res.status(501).send(err);
         else
             res.json(message);
     });

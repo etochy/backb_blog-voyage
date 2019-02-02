@@ -20,7 +20,6 @@ function create_util(req, res) {
     });
 }
 function get_a_util(req, res) {
-    console.log('get a utils')
     Utilisateur.findOne({ username: req.params.idUtil }, function (err, util) {
         if (err)
             res.send(err);

@@ -12,7 +12,9 @@ const Article = require('./models/article');
 const Message = require('./models/message');
 const Blog = require('./models/blog');
 const Ressource = require('./models/ressource');
+const Commentaire = require('./models/commentaire');
 const bodyParser = require('body-parser');
+
 
 mongoose.Promise = global.Promise;
 mongoose.connect(BDD, function (err, res) {
@@ -23,8 +25,8 @@ mongoose.connect(BDD, function (err, res) {
     }
 });
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({limit: '5mb', extended: true }));
+app.use(bodyParser.json({limit: '5mb'}));
 
 app.set('jwtTokenSecret', SECRET);
 

@@ -8,6 +8,7 @@ var Blog = new Schema({
   title: String,
   date: Date,
   image: String,
+  image64: String,
   contenu: String,
   title_eng: String,
   contenu_eng: String,

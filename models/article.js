@@ -11,7 +11,8 @@ var Article = new Schema({
   localisation: String,
   description: String,
   description_eng: String,
-  image: String
+  image: String,
+  image64: String
 });
 
 module.exports = mongoose.model('Article', Article);
